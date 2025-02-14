@@ -1,7 +1,7 @@
 import os
 from flask_restful import Resource
 from flask_restful_swagger import swagger
-from app.resources.ApiHandler import ApiHandler
+from api.resources.ApiHandler import ApiHandler
 
 
 ## Get from .env file
@@ -15,17 +15,17 @@ headers = {
 
 api_handler = ApiHandler(url=OPEN_ROUTE_SERVICE_API_URL, token=OPEN_ROUTE_SERVICE_API_KEY, headers=headers)
 
-class OrsRouteCoordinates(Resource):
+class OrsRoute(Resource):
     @swagger.operation()
     def get(self, start, end):
         """
-        Retourne les coordonnees GPS du trajet routier le plus court entre deux points de départ et d'arrivée.
+        Retourne un itineraire routier (driving-car) en format GeoJSON entre deux points de depart et d'arrivée .
         
-        :param start: Coordonnées gps de départ (format : "lon,lat")
-        :param end: Coordonnées gps d'arrivée (format : "lon,lat")
-        :return: Un tableau de coordonnées GPS (format : [[lon1, lat1], [lon2, lat2], ...])
+        :param start: Coordonnees gps de d part (format : "lon,lat")
+        :param end: Coordonnees gps d'arrivee (format : "lon,lat")
+        :return: itineraire routier en format GeoJSON, ou le JSON de la reponse en cas d'erreur
         """
         response = api_handler.get(f'/v2/directions/driving-car?api_key={OPEN_ROUTE_SERVICE_API_KEY}&start={start}&end={end}')
         if response.status_code == 200:
-            return response.json()["features"][0]["geometry"]["coordinates"]
+            return response.json()["features"][0]
         return response.json()

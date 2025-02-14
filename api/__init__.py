@@ -29,14 +29,14 @@ def create_api(app):
     from flask_restful_swagger import swagger
     api = swagger.docs(Api(app, prefix="/api"), apiVersion='1', api_spec_url="/documentation")
     ## Classes importées
-    from app.resources.ORS.OrsRoute import OrsRoute
-    from app.resources.ORS.OrsRouteCoordinates import OrsRouteCoordinates
-    from app.resources.ORS.OrsRouteSummary import OrsRouteSummary
-    from app.resources.ORS.OrsGeocodeSearch import OrsGeocodeSearch
-    from app.resources.ORS.OrsRouteDetailed import OrsRouteDetailed
+    from api.resources.ORS.OrsRoute import OrsRoute
+    from api.resources.ORS.OrsRouteCoordinates import OrsRouteCoordinates
+    from api.resources.ORS.OrsRouteSummary import OrsRouteSummary
+    from api.resources.ORS.OrsGeocodeSearch import OrsGeocodeSearch
+    from api.resources.ORS.OrsRouteDetailed import OrsRouteDetailed
 
-    from app.resources.ChargeTrip.CtVehicleList import ChargeTripVehicles
-    from app.resources.ChargeTrip.CtNearestStation import ChargeTripNearestStation
+    from api.resources.ChargeTrip.CtVehicleList import ChargeTripVehicles
+    from api.resources.ChargeTrip.CtNearestStation import ChargeTripNearestStation
 
     ## Routes
     # -- ORS --

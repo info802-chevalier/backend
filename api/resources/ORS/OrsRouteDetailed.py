@@ -3,7 +3,7 @@ from flask import request
 from flask_restful import Resource
 from flask_restful_swagger import swagger
 from flask_cors import cross_origin
-from app.resources.ApiHandler import ApiHandler
+from api.resources.ApiHandler import ApiHandler
 
 
 ## Get from .env file

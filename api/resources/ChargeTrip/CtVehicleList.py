@@ -1,7 +1,7 @@
 import os
 from flask_restful import Resource
 from flask_restful_swagger import swagger
-from app.resources.ApiHandler import ApiHandler
+from api.resources.ApiHandler import ApiHandler
 
 # Récupérer les variables d'environnement
 CHARGE_TRIP_API_URL = os.getenv("CHARGE_TRIP_API_URL")
