@@ -41,7 +41,7 @@ def create_api(app):
 
     ## Routes
     # -- Base --
-    @app.route('/')
+    @app.route('/api')
     def home():
         return render_template('documentation.html')
     # -- ORS --
