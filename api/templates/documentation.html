@@ -146,6 +146,7 @@
         });
       }
     }
+    const API_URL = "https://backend-tau-plum.vercel.app/api";
 
     const api = axios.create({
       baseURL: API_URL,
@@ -156,8 +157,6 @@
         "Access-Control-Allow-Headers": "Content-Type",
       },
     });
-
-    const API_URL = "https://backend-tau-plum.vercel.app";
 
     const Documentation = async function () {
       return api.get(`/documentation`);
