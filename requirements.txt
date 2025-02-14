@@ -2,7 +2,7 @@ flasgger==0.9.7.1
 Flask==3.1.0
 Flask-Cors==5.0.0
 Flask-RESTful==0.3.10
-flask-restful-swagger=0.20.2
+flask-restful-swagger==0.20.2
 jinja2-time==0.2.0
 Jinja2>=3.1.2
 pytest==8.3.3
