@@ -29,6 +29,8 @@ def create_api(app):
     from flask_restful_swagger import swagger
     api = swagger.docs(Api(app, prefix="/api"), apiVersion='1', api_spec_url="/documentation")
     ## Classes importées
+    from api.resources.ApiUtils import ApiUtils
+
     from api.resources.ORS.OrsRoute import OrsRoute
     from api.resources.ORS.OrsRouteCoordinates import OrsRouteCoordinates
     from api.resources.ORS.OrsRouteSummary import OrsRouteSummary
@@ -39,6 +41,7 @@ def create_api(app):
     from api.resources.ChargeTrip.CtNearestStation import ChargeTripNearestStation
 
     ## Routes
+    api.add_resource(ApiUtils, '/')
     # -- ORS --
     api.add_resource(OrsRoute, '/ors/route/<string:start>/<string:end>')
     api.add_resource(OrsRouteCoordinates, '/ors/route/coordinates/<string:start>/<string:end>')
