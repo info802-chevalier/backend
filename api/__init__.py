@@ -25,12 +25,11 @@ def create_api(app):
     :param app: Une instance de l'application Flask.
     :return: Une instance de l'API Flask-Restful configurée.
     """
+    from flask import render_template
     from flask_restful import Api
     from flask_restful_swagger import swagger
     api = swagger.docs(Api(app, prefix="/api"), apiVersion='1', api_spec_url="/documentation")
     ## Classes importées
-    from api.resources.ApiUtils import ApiUtils
-
     from api.resources.ORS.OrsRoute import OrsRoute
     from api.resources.ORS.OrsRouteCoordinates import OrsRouteCoordinates
     from api.resources.ORS.OrsRouteSummary import OrsRouteSummary
@@ -41,7 +40,10 @@ def create_api(app):
     from api.resources.ChargeTrip.CtNearestStation import ChargeTripNearestStation
 
     ## Routes
-    api.add_resource(ApiUtils, '/')
+    # -- Base --
+    @app.route('/')
+    def home():
+        return render_template('documentation.html')
     # -- ORS --
     api.add_resource(OrsRoute, '/ors/route/<string:start>/<string:end>')
     api.add_resource(OrsRouteCoordinates, '/ors/route/coordinates/<string:start>/<string:end>')
