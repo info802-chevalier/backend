@@ -163,9 +163,12 @@
       return api.get(`/documentation`);
     };
 
-    const documentation = await Documentation();
-    const documentationService = new DocumentationService(documentation.data);
-    console.log(documentationService.getDocumentation());
-    documentationService.render();
+    const init = async function () {
+      const documentation = await Documentation();
+      const documentationService = new DocumentationService(documentation.data);
+      documentationService.render();
+    };
+
+    init();
   </script>
 </html>
